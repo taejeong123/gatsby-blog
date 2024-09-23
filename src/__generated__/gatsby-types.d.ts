@@ -765,6 +765,7 @@ type Mdx = Node & {
   readonly children: ReadonlyArray<Node>;
   readonly excerpt: Maybe<Scalars['String']>;
   readonly frontmatter: Maybe<MdxFrontmatter>;
+  readonly gatsbyPath: Maybe<Scalars['String']>;
   readonly id: Scalars['ID'];
   readonly internal: Internal;
   readonly parent: Maybe<Node>;
@@ -774,6 +775,11 @@ type Mdx = Node & {
 
 type Mdx_excerptArgs = {
   pruneLength?: InputMaybe<Scalars['Int']>;
+};
+
+
+type Mdx_gatsbyPathArgs = {
+  filePath: InputMaybe<Scalars['String']>;
 };
 
 
@@ -831,6 +837,7 @@ type MdxFieldSelector = {
   readonly children: InputMaybe<NodeFieldSelector>;
   readonly excerpt: InputMaybe<FieldSelectorEnum>;
   readonly frontmatter: InputMaybe<MdxFrontmatterFieldSelector>;
+  readonly gatsbyPath: InputMaybe<FieldSelectorEnum>;
   readonly id: InputMaybe<FieldSelectorEnum>;
   readonly internal: InputMaybe<InternalFieldSelector>;
   readonly parent: InputMaybe<NodeFieldSelector>;
@@ -842,6 +849,7 @@ type MdxFilterInput = {
   readonly children: InputMaybe<NodeFilterListInput>;
   readonly excerpt: InputMaybe<StringQueryOperatorInput>;
   readonly frontmatter: InputMaybe<MdxFrontmatterFilterInput>;
+  readonly gatsbyPath: InputMaybe<StringQueryOperatorInput>;
   readonly id: InputMaybe<StringQueryOperatorInput>;
   readonly internal: InputMaybe<InternalFilterInput>;
   readonly parent: InputMaybe<NodeFilterInput>;
@@ -930,6 +938,7 @@ type MdxSortInput = {
   readonly children: InputMaybe<NodeSortInput>;
   readonly excerpt: InputMaybe<SortOrderEnum>;
   readonly frontmatter: InputMaybe<MdxFrontmatterSortInput>;
+  readonly gatsbyPath: InputMaybe<SortOrderEnum>;
   readonly id: InputMaybe<SortOrderEnum>;
   readonly internal: InputMaybe<InternalSortInput>;
   readonly parent: InputMaybe<NodeSortInput>;
@@ -1151,6 +1160,7 @@ type Query_mdxArgs = {
   children: InputMaybe<NodeFilterListInput>;
   excerpt: InputMaybe<StringQueryOperatorInput>;
   frontmatter: InputMaybe<MdxFrontmatterFilterInput>;
+  gatsbyPath: InputMaybe<StringQueryOperatorInput>;
   id: InputMaybe<StringQueryOperatorInput>;
   internal: InputMaybe<InternalFilterInput>;
   parent: InputMaybe<NodeFilterInput>;
@@ -2006,7 +2016,14 @@ type StringQueryOperatorInput = {
 type AllMdxQueryVariables = Exact<{ [key: string]: never; }>;
 
 
-type AllMdxQuery = { readonly allMdx: { readonly nodes: ReadonlyArray<{ readonly id: string, readonly excerpt: string | null, readonly frontmatter: { readonly date: string | null, readonly title: string | null } | null }> } };
+type AllMdxQuery = { readonly allMdx: { readonly nodes: ReadonlyArray<{ readonly id: string, readonly frontmatter: { readonly date: string | null, readonly title: string | null, readonly slug: string | null } | null }> } };
+
+type MdxQueryVariables = Exact<{
+  id: InputMaybe<Scalars['String']>;
+}>;
+
+
+type MdxQuery = { readonly mdx: { readonly frontmatter: { readonly title: string | null, readonly date: string | null } | null } | null };
 
 type SiteMetadataQueryVariables = Exact<{ [key: string]: never; }>;
 
