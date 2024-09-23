@@ -4,25 +4,32 @@ import Layout from "../components/layout";
 import Seo from "../components/seo";
 
 type BlogPageProps = {
-  data: GatsbyTypes.AllFileQuery;
+  data: GatsbyTypes.AllMdxQuery;
 };
 const BlogPage = ({ data }: BlogPageProps) => {
   return (
     <Layout pageTitle="My Blog Posts">
-      <ul>
-        {data.allFile.nodes.map((node) => (
-          <li key={node.name}>{node.name}</li>
-        ))}
-      </ul>
+      {data.allMdx.nodes.map((node) => (
+        <article key={node.id}>
+          <h2>{node.frontmatter?.title}</h2>
+          <p>Posted: {node.frontmatter?.date}</p>
+          <p>{node.excerpt}</p>
+        </article>
+      ))}
     </Layout>
   );
 };
 
 export const query = graphql`
-  query AllFile {
-    allFile {
+  query AllMdx {
+    allMdx(sort: { frontmatter: { date: DESC } }) {
       nodes {
-        name
+        frontmatter {
+          date(formatString: "MMMM D, YYYY")
+          title
+        }
+        id
+        excerpt
       }
     }
   }

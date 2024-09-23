@@ -13,6 +13,7 @@ const config: GatsbyConfig = {
     "gatsby-plugin-emotion",
     "gatsby-plugin-image",
     "gatsby-plugin-sharp",
+    "gatsby-plugin-mdx",
     {
       resolve: "gatsby-source-filesystem",
       options: {
