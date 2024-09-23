@@ -28,6 +28,7 @@ const config: GatsbyConfig = {
         watch: process.env.MODE_ENV === `development`,
       },
     },
+    "gatsby-transformer-sharp",
   ],
 };
 
