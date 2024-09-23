@@ -13,6 +13,19 @@ const config: GatsbyConfig = {
     "gatsby-plugin-emotion",
     "gatsby-plugin-image",
     "gatsby-plugin-sharp",
+    {
+      resolve: "gatsby-source-filesystem",
+      options: {
+        name: `blog`,
+        path: `${__dirname}/blog`,
+      },
+    },
+    {
+      resolve: "gatsby-plugin-typegen",
+      options: {
+        outputPath: `./src/__generated__/gatsby-types.d.ts`,
+      },
+    },
   ],
 };
 
