@@ -10,25 +10,44 @@ const config: GatsbyConfig = {
   // Learn more at: https://gatsby.dev/graphql-typegen
   graphqlTypegen: true,
   plugins: [
-    "gatsby-plugin-emotion",
-    "gatsby-plugin-image",
-    "gatsby-plugin-sharp",
-    "gatsby-plugin-mdx",
     {
-      resolve: "gatsby-source-filesystem",
+      resolve: `gatsby-plugin-alias-imports`,
+      options: {
+        alias: {
+          "@": "./src",
+        },
+        extensions: ["ts", "tsx"],
+      },
+    },
+    `gatsby-plugin-emotion`,
+    `gatsby-plugin-image`,
+    `gatsby-plugin-sharp`,
+    {
+      resolve: `gatsby-plugin-mdx`,
+      options: {
+        gatsbyRemarkPlugins: [
+          {
+            resolve: `gatsby-remark-prismjs`,
+            options: {},
+          },
+        ],
+      },
+    },
+    {
+      resolve: `gatsby-source-filesystem`,
       options: {
         name: `blog`,
         path: `${__dirname}/blog`,
       },
     },
     {
-      resolve: "gatsby-plugin-typegen",
+      resolve: `gatsby-plugin-typegen`,
       options: {
         outputPath: `./src/__generated__/gatsby-types.d.ts`,
         watch: process.env.MODE_ENV === `development`,
       },
     },
-    "gatsby-transformer-sharp",
+    `gatsby-transformer-sharp`,
   ],
 };
 

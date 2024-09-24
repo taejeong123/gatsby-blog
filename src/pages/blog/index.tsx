@@ -1,23 +1,26 @@
+import { Layout, Seo } from "@/components";
 import { Link, graphql } from "gatsby";
 import React from "react";
-import Layout from "../../components/layout";
-import Seo from "../../components/seo";
 
 type BlogPageProps = {
   data: GatsbyTypes.AllMdxQuery;
 };
 const BlogPage = ({ data }: BlogPageProps) => {
   return (
-    <Layout pageTitle="My Blog Posts">
+    <Layout>
+      <h1>Blogs</h1>
+
       {data.allMdx.nodes.map((node) => (
         <article key={node.id}>
-          <h2>
+          <h3>
             <Link to={`/blog/${node.frontmatter?.slug}`}>
               {node.frontmatter?.title}
             </Link>
-          </h2>
-          <p>Posted: {node.frontmatter?.date}</p>
-          {/* <p>{node.excerpt}</p> */}
+          </h3>
+          <p>{node.frontmatter?.date}</p>
+          {node.frontmatter?.tags?.map((tag, i) => (
+            <span key={`${tag}_${i}`}>#{tag}&nbsp;</span>
+          ))}
         </article>
       ))}
     </Layout>
@@ -32,9 +35,9 @@ export const query = graphql`
           date(formatString: "MMMM D, YYYY")
           title
           slug
+          tags
         }
         id
-        # excerpt
       }
     }
   }

@@ -1,8 +1,7 @@
+import { Layout, Seo } from "@/components";
 import { graphql } from "gatsby";
 import { GatsbyImage, getImage } from "gatsby-plugin-image";
 import React, { ReactNode } from "react";
-import Layout from "../../components/layout";
-import Seo from "../../components/seo";
 
 type BlogPostProps = {
   data: GatsbyTypes.MdxQuery;
@@ -14,8 +13,11 @@ const BlogPost = ({ data, children }: BlogPostProps) => {
 
   return (
     <>
-      <Layout pageTitle={data.mdx?.frontmatter?.title || ""}>
-        <p>Posted: {data.mdx?.frontmatter?.date}</p>
+      <Layout>
+        <h1>{data.mdx?.frontmatter?.title}</h1>
+        <p>{data.mdx?.frontmatter?.date}</p>
+
+        <hr />
 
         {image && (
           <GatsbyImage
@@ -23,13 +25,6 @@ const BlogPost = ({ data, children }: BlogPostProps) => {
             alt={data.mdx?.frontmatter?.hero_image_alt || ""}
           />
         )}
-
-        <p>
-          Photo Credit:{" "}
-          <a href={data.mdx?.frontmatter?.hero_image_credit_link || ""}>
-            {data.mdx?.frontmatter?.hero_image_credit_text}
-          </a>
-        </p>
 
         {children}
       </Layout>
@@ -43,6 +38,7 @@ export const query = graphql`
       frontmatter {
         title
         date(formatString: "MMMM D, YYYY")
+        tags
         hero_image_alt
         hero_image_credit_link
         hero_image_credit_text

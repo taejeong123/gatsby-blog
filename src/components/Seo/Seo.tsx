@@ -1,10 +1,10 @@
+import { useSiteMetadata } from "@/hooks";
 import React from "react";
-import useSiteMetadata from "../hooks/useSiteMetadata";
 
 type SeoProps = {
   title: string;
 };
-const Seo = ({ title }: SeoProps) => {
+export const Seo = ({ title }: SeoProps) => {
   const siteMetadata = useSiteMetadata();
 
   return (
@@ -13,5 +13,3 @@ const Seo = ({ title }: SeoProps) => {
     </title>
   );
 };
-
-export default Seo;

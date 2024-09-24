@@ -1351,6 +1351,7 @@ type MdxFrontmatter = {
   readonly hero_image_credit_link: Maybe<Scalars['String']>;
   readonly hero_image_credit_text: Maybe<Scalars['String']>;
   readonly slug: Maybe<Scalars['String']>;
+  readonly tags: Maybe<ReadonlyArray<Maybe<Scalars['String']>>>;
   readonly title: Maybe<Scalars['String']>;
 };
 
@@ -1369,6 +1370,7 @@ type MdxFrontmatterFieldSelector = {
   readonly hero_image_credit_link: InputMaybe<FieldSelectorEnum>;
   readonly hero_image_credit_text: InputMaybe<FieldSelectorEnum>;
   readonly slug: InputMaybe<FieldSelectorEnum>;
+  readonly tags: InputMaybe<FieldSelectorEnum>;
   readonly title: InputMaybe<FieldSelectorEnum>;
 };
 
@@ -1379,6 +1381,7 @@ type MdxFrontmatterFilterInput = {
   readonly hero_image_credit_link: InputMaybe<StringQueryOperatorInput>;
   readonly hero_image_credit_text: InputMaybe<StringQueryOperatorInput>;
   readonly slug: InputMaybe<StringQueryOperatorInput>;
+  readonly tags: InputMaybe<StringQueryOperatorInput>;
   readonly title: InputMaybe<StringQueryOperatorInput>;
 };
 
@@ -1389,6 +1392,7 @@ type MdxFrontmatterSortInput = {
   readonly hero_image_credit_link: InputMaybe<SortOrderEnum>;
   readonly hero_image_credit_text: InputMaybe<SortOrderEnum>;
   readonly slug: InputMaybe<SortOrderEnum>;
+  readonly tags: InputMaybe<SortOrderEnum>;
   readonly title: InputMaybe<SortOrderEnum>;
 };
 
@@ -2579,14 +2583,14 @@ type WebPOptions = {
 type AllMdxQueryVariables = Exact<{ [key: string]: never; }>;
 
 
-type AllMdxQuery = { readonly allMdx: { readonly nodes: ReadonlyArray<{ readonly id: string, readonly frontmatter: { readonly date: string | null, readonly title: string | null, readonly slug: string | null } | null }> } };
+type AllMdxQuery = { readonly allMdx: { readonly nodes: ReadonlyArray<{ readonly id: string, readonly frontmatter: { readonly date: string | null, readonly title: string | null, readonly slug: string | null, readonly tags: ReadonlyArray<string | null> | null } | null }> } };
 
 type MdxQueryVariables = Exact<{
   id: InputMaybe<Scalars['String']>;
 }>;
 
 
-type MdxQuery = { readonly mdx: { readonly frontmatter: { readonly title: string | null, readonly date: string | null, readonly hero_image_alt: string | null, readonly hero_image_credit_link: string | null, readonly hero_image_credit_text: string | null, readonly hero_image: { readonly childImageSharp: { readonly gatsbyImageData: import('gatsby-plugin-image').IGatsbyImageData } | null } | null } | null } | null };
+type MdxQuery = { readonly mdx: { readonly frontmatter: { readonly title: string | null, readonly date: string | null, readonly tags: ReadonlyArray<string | null> | null, readonly hero_image_alt: string | null, readonly hero_image_credit_link: string | null, readonly hero_image_credit_text: string | null, readonly hero_image: { readonly childImageSharp: { readonly gatsbyImageData: import('gatsby-plugin-image').IGatsbyImageData } | null } | null } | null } | null };
 
 type SiteMetadataQueryVariables = Exact<{ [key: string]: never; }>;
 
