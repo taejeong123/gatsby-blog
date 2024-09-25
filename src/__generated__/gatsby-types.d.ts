@@ -2590,7 +2590,7 @@ type MdxQueryVariables = Exact<{
 }>;
 
 
-type MdxQuery = { readonly mdx: { readonly frontmatter: { readonly title: string | null, readonly date: string | null, readonly tags: ReadonlyArray<string | null> | null, readonly hero_image_alt: string | null, readonly hero_image_credit_link: string | null, readonly hero_image_credit_text: string | null, readonly hero_image: { readonly childImageSharp: { readonly gatsbyImageData: import('gatsby-plugin-image').IGatsbyImageData } | null } | null } | null } | null };
+type MdxQuery = { readonly mdx: { readonly frontmatter: { readonly title: string | null, readonly date: string | null, readonly tags: ReadonlyArray<string | null> | null } | null } | null };
 
 type SiteMetadataQueryVariables = Exact<{ [key: string]: never; }>;
 

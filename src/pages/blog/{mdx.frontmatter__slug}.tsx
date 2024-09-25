@@ -1,7 +1,6 @@
 import { Flex, Layout, Seo, Tag } from "@/ui";
 import styled from "@emotion/styled";
 import { graphql } from "gatsby";
-import { GatsbyImage, getImage } from "gatsby-plugin-image";
 import React, { ReactNode } from "react";
 
 type BlogPostProps = {
@@ -9,9 +8,6 @@ type BlogPostProps = {
   children: ReactNode;
 };
 const BlogPost = ({ data, children }: BlogPostProps) => {
-  const heroImage = data.mdx?.frontmatter?.hero_image;
-  const image = heroImage && getImage(heroImage?.childImageSharp);
-
   return (
     <Layout>
       <StyledBlogContentHeader gap="10px" flexDirection="column">
@@ -27,13 +23,6 @@ const BlogPost = ({ data, children }: BlogPostProps) => {
 
       <StyledDivider />
 
-      {image && (
-        <GatsbyImage
-          image={image}
-          alt={data.mdx?.frontmatter?.hero_image_alt || ""}
-        />
-      )}
-
       {children}
     </Layout>
   );
@@ -46,14 +35,6 @@ export const query = graphql`
         title
         date(formatString: "MMMM D, YYYY")
         tags
-        hero_image_alt
-        hero_image_credit_link
-        hero_image_credit_text
-        hero_image {
-          childImageSharp {
-            gatsbyImageData
-          }
-        }
       }
     }
   }
