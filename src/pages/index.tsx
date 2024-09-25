@@ -1,4 +1,4 @@
-import { Layout, Seo } from "@/components";
+import { Layout, Seo } from "@/ui";
 import React from "react";
 
 const IndexPage = () => {

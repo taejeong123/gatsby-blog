@@ -1,4 +1,4 @@
-import { Layout } from "@/components";
+import { Layout } from "@/ui";
 import React from "react";
 
 const AboutPage = () => {

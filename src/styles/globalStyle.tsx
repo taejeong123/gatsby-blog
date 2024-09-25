@@ -1,7 +1,8 @@
-import { Global, css } from "@emotion/react";
+import { Color } from "@/ui";
+import { Global, Theme, css } from "@emotion/react";
 import React from "react";
 
-const baseStyle = css`
+const baseStyle = (theme: Theme) => css`
   @import url("https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard.css");
 
   /* box-sizing 규칙을 명시합니다. */
@@ -10,6 +11,8 @@ const baseStyle = css`
   *::after {
     box-sizing: border-box;
     font-family: Pretendard !important;
+    /* margin: 0;
+    padding: 0; */
   }
 
   /* 폰트 크기의 팽창을 방지합니다. */
@@ -41,8 +44,11 @@ const baseStyle = css`
 
   /* 핵심 body의 기본값을 설정합니다. */
   body {
-    min-height: 100vh;
+    /* min-height: 100vh; */
     line-height: 1.5;
+
+    color: ${theme.mode.text};
+    background-color: ${theme.mode.backgroundColor};
   }
 
   /* 제목 요소와 상호작용하는 요소에 대해 line-height를 더 짧게 설정합니다. */
@@ -105,12 +111,10 @@ const baseStyle = css`
 
   // 인라인 코드 블록 스타일
   span > code[class*="language-"] {
-    font-size: 12px;
-    line-height: 1.5;
+    font-size: 14px;
     padding: 2px 4px;
+    color: ${Color.Sandstone};
   }
 `;
 
-const GlobalStyle = () => <Global styles={baseStyle} />;
-
-export default GlobalStyle;
+export const GlobalStyle = () => <Global styles={baseStyle} />;

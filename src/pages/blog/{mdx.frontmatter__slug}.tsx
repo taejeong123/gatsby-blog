@@ -1,4 +1,5 @@
-import { Layout, Seo } from "@/components";
+import { Flex, Layout, Seo, Tag } from "@/ui";
+import styled from "@emotion/styled";
 import { graphql } from "gatsby";
 import { GatsbyImage, getImage } from "gatsby-plugin-image";
 import React, { ReactNode } from "react";
@@ -12,23 +13,29 @@ const BlogPost = ({ data, children }: BlogPostProps) => {
   const image = heroImage && getImage(heroImage?.childImageSharp);
 
   return (
-    <>
-      <Layout>
+    <Layout>
+      <StyledBlogContentHeader gap="10px" flexDirection="column">
+        <Flex gap="10px">
+          {data.mdx?.frontmatter?.tags?.map((tag, i) => (
+            <Tag key={`${tag}_${i}`}>{tag}</Tag>
+          ))}
+        </Flex>
+
         <h1>{data.mdx?.frontmatter?.title}</h1>
-        <p>{data.mdx?.frontmatter?.date}</p>
+        <span>{data.mdx?.frontmatter?.date}</span>
+      </StyledBlogContentHeader>
 
-        <hr />
+      <StyledDivider />
 
-        {image && (
-          <GatsbyImage
-            image={image}
-            alt={data.mdx?.frontmatter?.hero_image_alt || ""}
-          />
-        )}
+      {image && (
+        <GatsbyImage
+          image={image}
+          alt={data.mdx?.frontmatter?.hero_image_alt || ""}
+        />
+      )}
 
-        {children}
-      </Layout>
-    </>
+      {children}
+    </Layout>
   );
 };
 
@@ -57,3 +64,22 @@ export const Head = ({ data }: { data: GatsbyTypes.MdxQuery }) => (
 );
 
 export default BlogPost;
+
+const StyledBlogContentHeader = styled(Flex)`
+  margin-top: 30px;
+
+  & > h1 {
+    margin: 0;
+  }
+
+  & > span {
+    font-size: 14px;
+  }
+`;
+
+const StyledDivider = styled.div`
+  margin: 30px 0;
+  width: 100%;
+  height: 1px;
+  background-color: ${({ theme }) => theme.mode.dividerColor};
+`;
