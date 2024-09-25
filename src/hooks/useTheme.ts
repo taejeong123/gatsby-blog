@@ -2,27 +2,24 @@ import { ThemeType } from "@/types/declare";
 import { useEffect, useState } from "react";
 
 export const useTheme = (): [ThemeType, () => void] => {
-  let prefersColorScheme = null;
-  let localTheme = null;
-
-  const [theme, setTheme] = useState<ThemeType>(
-    localTheme || prefersColorScheme!
-  );
-
-  useEffect(() => {
-    prefersColorScheme = window.matchMedia(`prefers-color-schema:dark`).matches
+  const getInitialTheme = (): ThemeType => {
+    if (typeof window === "undefined") return "light";
+    const localTheme = localStorage.getItem("theme") as ThemeType;
+    const prefersColorScheme = window.matchMedia("(prefers-color-scheme: dark)")
+      .matches
       ? "dark"
       : "light";
-    localTheme = localStorage.getItem("theme") as ThemeType;
-  }, []);
-
-  const setMode = (mode: ThemeType) => {
-    localStorage.setItem("theme", mode);
-    setTheme(mode);
+    return localTheme || prefersColorScheme;
   };
 
+  const [theme, setTheme] = useState<ThemeType>(getInitialTheme);
+
+  useEffect(() => {
+    localStorage.setItem("theme", theme);
+  }, [theme]);
+
   const themeToggler = () => {
-    theme === "light" ? setMode("dark") : setMode("light");
+    setTheme((prev) => (prev === "light" ? "dark" : "light"));
   };
 
   return [theme, themeToggler];
