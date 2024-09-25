@@ -62,14 +62,6 @@ const baseStyle = (theme: Theme) => css`
     line-height: 1.1;
   }
 
-  /* 제목에 대한 text-wrap을 balance로 설정합니다. */
-  h1,
-  h2,
-  h3,
-  h4 {
-    text-wrap: balance;
-  }
-
   /* 클래스가 없는 기본 a 태그 요소는 기본 스타일을 가져옵니다. */
   a:not([class]) {
     text-decoration-skip-ink: auto;
