@@ -9,9 +9,14 @@ export const Tag = ({ children }: TagProps) => {
 };
 
 const StyledTag = styled.div`
-  border: 1px solid gray;
-  border-radius: 50px;
   padding: 2px 8px;
+  border-radius: 50px;
   font-size: 12px;
+  background-color: ${({ theme }) => theme.mode.tagBackgroundColor};
   cursor: pointer;
+  transition: background-color 0.3s;
+
+  &:hover {
+    background-color: ${({ theme }) => theme.mode.tagHoverBackgroundColor};
+  }
 `;

@@ -9,6 +9,7 @@ export const Color = {
   MonoBg: "#FCFCFC",
   MonoWhite: "#FFFFFF",
   MonoWhiteText: "#ECECEC",
+  w: "#F1F3F5",
 
   Sandstone: "#ECDFCC",
   MutedSage: "#697565",
@@ -16,7 +17,7 @@ export const Color = {
   DarkMossGray: "#1E201E",
 
   DimmedDarkMossGray: "#1E201ECC",
-  DimmedWhite: "#ECECECCC",
+  DimmedWhite: "#FFFFFFCC",
 };
 
 export type ColorType = keyof typeof Color;

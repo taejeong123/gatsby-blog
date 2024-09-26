@@ -9,6 +9,8 @@ declare module "@emotion/react" {
       blogThumbnailBackgroundColor: string;
       blogThumbnailIconColor: string;
       dividerColor: string;
+      tagBackgroundColor: string;
+      tagHoverBackgroundColor: string;
     };
   }
 }
