@@ -1,9 +1,14 @@
-import { Flex } from "@/ui";
+import { ThemeType } from "@/types/declare";
+import { Flex, Icon } from "@/ui";
 import styled from "@emotion/styled";
 import { Link } from "gatsby";
 import React from "react";
 
-export const GlobalHeader = () => {
+type GlobalHeaderType = {
+  theme: ThemeType;
+  onThemeToggle: () => void;
+};
+export const GlobalHeader = ({ theme, onThemeToggle }: GlobalHeaderType) => {
   return (
     <StyledHeader>
       <StyledHeaderContainer alignItems="center" justifyContent="space-between">
@@ -19,6 +24,14 @@ export const GlobalHeader = () => {
             </li>
             <li>
               <StyledLink to="/about">About</StyledLink>
+            </li>
+            <li>
+              <ThemeToggleButton onClick={onThemeToggle}>
+                <Icon
+                  variant={theme === "light" ? "Moon" : "Sun"}
+                  size="18px"
+                />
+              </ThemeToggleButton>
             </li>
           </ul>
         </nav>
@@ -43,10 +56,12 @@ const StyledHeader = styled.header`
 
 const StyledHeaderContainer = styled(Flex)`
   width: 1100px;
+  height: 100%;
 
   & > nav {
     & > ul {
       display: flex;
+      align-items: center;
       gap: 20px;
       list-style: none;
     }
@@ -56,4 +71,15 @@ const StyledHeaderContainer = styled(Flex)`
 const StyledLink = styled(Link)`
   color: ${({ theme }) => theme.mode.text};
   text-decoration: none;
+`;
+
+const ThemeToggleButton = styled.button`
+  padding: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: none;
+  color: ${({ theme }) => theme.mode.text};
+  background-color: ${({ theme }) => theme.mode.backgroundColor};
+  cursor: pointer;
 `;

@@ -16,15 +16,11 @@ export const GlobalLayout = ({ children }: GlobalLayoutProps) => {
     <ThemeProvider theme={themeMode}>
       <GlobalStyle />
 
-      <GlobalHeader />
+      <GlobalHeader theme={theme} onThemeToggle={themeToggler} />
 
       <StyledContainer>
         <main>{children}</main>
       </StyledContainer>
-
-      <ThemeToggleButton onClick={themeToggler}>
-        {theme === "light" ? "dark" : "light"}
-      </ThemeToggleButton>
     </ThemeProvider>
   );
 };
@@ -34,18 +30,4 @@ const StyledContainer = styled.div`
   margin-top: 50px;
   padding: 30px 0;
   max-width: 700px;
-`;
-
-const ThemeToggleButton = styled.button`
-  width: 100px;
-  height: 50px;
-  position: fixed;
-  right: 50px;
-  bottom: 50px;
-  transform: transition(-50%, -50%);
-  border: 1px solid ${({ theme }) => theme.mode.text};
-  border-radius: 50px;
-  color: ${({ theme }) => theme.mode.text};
-  background-color: ${({ theme }) => theme.mode.backgroundColor};
-  cursor: pointer;
 `;

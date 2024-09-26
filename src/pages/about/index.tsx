@@ -1,4 +1,4 @@
-import { GlobalLayout } from "@/ui";
+import { GlobalLayout, Seo } from "@/ui";
 import React from "react";
 
 const AboutPage = () => {
@@ -9,6 +9,6 @@ const AboutPage = () => {
   );
 };
 
-export const Head = () => <title>About Me</title>;
+export const Head = () => <Seo title="About" />;
 
 export default AboutPage;
