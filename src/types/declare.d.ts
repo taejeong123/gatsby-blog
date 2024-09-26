@@ -5,6 +5,7 @@ declare module "@emotion/react" {
     mode: {
       text: string;
       backgroundColor: string;
+      headerDimmedBackgroundColor: string;
       dividerColor: string;
     };
   }

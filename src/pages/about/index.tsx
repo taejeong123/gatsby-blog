@@ -1,12 +1,11 @@
-import { Layout } from "@/ui";
+import { GlobalLayout } from "@/ui";
 import React from "react";
 
 const AboutPage = () => {
   return (
-    <Layout>
-      <h1>About Me</h1>
+    <GlobalLayout>
       <p>I'm Front-End developer work in korea.</p>
-    </Layout>
+    </GlobalLayout>
   );
 };
 

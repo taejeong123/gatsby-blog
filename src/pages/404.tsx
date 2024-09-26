@@ -1,12 +1,13 @@
-import { Link } from "gatsby";
+import { Flex, GlobalLayout } from "@/ui";
 import * as React from "react";
 
 const NotFoundPage = () => {
   return (
-    <main>
-      <h1>Page not found</h1>
-      <Link to="/">Go home</Link>
-    </main>
+    <GlobalLayout>
+      <Flex justifyContent="center">
+        <h1>404 Page not found</h1>
+      </Flex>
+    </GlobalLayout>
   );
 };
 

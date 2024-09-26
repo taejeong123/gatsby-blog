@@ -5,7 +5,8 @@ export const lightTheme: Theme = {
   mode: {
     text: Color.DarkMossGray,
     backgroundColor: Color.MonoWhiteText,
-    dividerColor: Color.DarkMossGray,
+    headerDimmedBackgroundColor: Color.DimmedWhite,
+    dividerColor: Color.MonoGray02,
   },
 };
 
@@ -13,6 +14,7 @@ export const darkTheme: Theme = {
   mode: {
     text: Color.MonoWhiteText,
     backgroundColor: Color.DarkMossGray,
-    dividerColor: Color.MonoGray01,
+    headerDimmedBackgroundColor: Color.DimmedDarkMossGray,
+    dividerColor: Color.MonoGray00,
   },
 };

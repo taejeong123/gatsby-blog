@@ -1,4 +1,4 @@
-import { Flex, Layout, Seo, Tag } from "@/ui";
+import { Flex, GlobalLayout, Seo, Tag } from "@/ui";
 import styled from "@emotion/styled";
 import { graphql } from "gatsby";
 import React, { ReactNode } from "react";
@@ -9,7 +9,7 @@ type BlogPostProps = {
 };
 const BlogPost = ({ data, children }: BlogPostProps) => {
   return (
-    <Layout>
+    <GlobalLayout>
       <StyledBlogContentHeader gap="10px" flexDirection="column">
         <Flex gap="10px">
           {data.mdx?.frontmatter?.tags?.map((tag, i) => (
@@ -24,7 +24,7 @@ const BlogPost = ({ data, children }: BlogPostProps) => {
       <StyledDivider />
 
       {children}
-    </Layout>
+    </GlobalLayout>
   );
 };
 
@@ -47,8 +47,6 @@ export const Head = ({ data }: { data: GatsbyTypes.MdxQuery }) => (
 export default BlogPost;
 
 const StyledBlogContentHeader = styled(Flex)`
-  margin-top: 30px;
-
   & > h1 {
     margin: 0;
   }

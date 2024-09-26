@@ -14,6 +14,9 @@ export const Color = {
   MutedSage: "#697565",
   ShadowedOlive: "#3C3D37",
   DarkMossGray: "#1E201E",
+
+  DimmedDarkMossGray: "#1E201ECC",
+  DimmedWhite: "#ECECECCC",
 };
 
 export type ColorType = keyof typeof Color;
