@@ -1,7 +1,7 @@
+import { StyledLink } from "@/styles";
 import { ThemeType } from "@/types/declare";
 import { Flex, Icon } from "@/ui";
 import styled from "@emotion/styled";
-import { Link } from "gatsby";
 import React from "react";
 
 type GlobalHeaderType = {
@@ -66,11 +66,6 @@ const StyledHeaderContainer = styled(Flex)`
       list-style: none;
     }
   }
-`;
-
-const StyledLink = styled(Link)`
-  color: ${({ theme }) => theme.mode.text};
-  text-decoration: none;
 `;
 
 const ThemeToggleButton = styled.button`

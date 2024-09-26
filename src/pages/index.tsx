@@ -1,6 +1,8 @@
-import { Flex, GlobalLayout, Seo, Tag } from "@/ui";
+import { StyledLink } from "@/styles";
+import { Flex, GlobalLayout, Icon, Seo, Tag } from "@/ui";
 import styled from "@emotion/styled";
-import { Link, graphql, navigate } from "gatsby";
+import { graphql, navigate } from "gatsby";
+import { GatsbyImage } from "gatsby-plugin-image";
 import React from "react";
 
 type IndexPageProps = {
@@ -19,14 +21,29 @@ const IndexPage = ({ data }: IndexPageProps) => {
         {data.allMdx.nodes.map((node) => (
           <StyledCardContent key={node.id}>
             <StyledImageBox
+              justifyContent="center"
+              alignItems="center"
               onClick={() => handleOnClickArticle(node.frontmatter?.slug || "")}
-            ></StyledImageBox>
+            >
+              {node.frontmatter?.thumbnail_image?.childImageSharp
+                ?.gatsbyImageData ? (
+                <StyledThumbnailImage
+                  image={
+                    node.frontmatter?.thumbnail_image?.childImageSharp
+                      ?.gatsbyImageData
+                  }
+                  alt={node.frontmatter?.thumbnail_image_alt || "image alt"}
+                />
+              ) : (
+                <StyledThumbnailIcon variant="Image" size="20px" />
+              )}
+            </StyledImageBox>
 
             <Flex gap="5px" flexDirection="column">
               <h3>
-                <Link to={`/blog/${node.frontmatter?.slug}`}>
+                <StyledLink to={`/blog/${node.frontmatter?.slug}`}>
                   {node.frontmatter?.title}
-                </Link>
+                </StyledLink>
               </h3>
               <span>{node.frontmatter?.date}</span>
               <Flex gap="10px">
@@ -51,6 +68,12 @@ export const query = graphql`
           title
           slug
           tags
+          thumbnail_image {
+            childImageSharp {
+              gatsbyImageData
+            }
+          }
+          thumbnail_image_alt
         }
         id
       }
@@ -73,17 +96,28 @@ const StyledContainer = styled(Flex)`
   }
 `;
 
-const StyledImageBox = styled.div`
+const StyledImageBox = styled(Flex)`
   width: 100%;
   height: 150px;
-  background-color: gray;
+  overflow: hidden;
+  background-color: ${({ theme }) => theme.mode.blogThumbnailBackgroundColor};
   border-radius: 8px;
-  transition: 0.3s;
+  transition: transform 0.3s;
   cursor: pointer;
 
   &:hover {
     transform: scale(1.02);
   }
+`;
+
+const StyledThumbnailImage = styled(GatsbyImage)`
+  width: 100%;
+  height: 100%;
+`;
+
+const StyledThumbnailIcon = styled(Icon)`
+  color: ${({ theme }) => theme.mode.blogThumbnailIconColor};
+  opacity: 0.5;
 `;
 
 const StyledCardContent = styled.article`

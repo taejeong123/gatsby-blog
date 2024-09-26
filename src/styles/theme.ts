@@ -6,6 +6,8 @@ export const lightTheme: Theme = {
     text: Color.DarkMossGray,
     backgroundColor: Color.MonoWhiteText,
     headerDimmedBackgroundColor: Color.DimmedWhite,
+    blogThumbnailBackgroundColor: Color.MonoGray02,
+    blogThumbnailIconColor: Color.MonoGray01,
     dividerColor: Color.MonoGray02,
   },
 };
@@ -15,6 +17,8 @@ export const darkTheme: Theme = {
     text: Color.MonoWhiteText,
     backgroundColor: Color.DarkMossGray,
     headerDimmedBackgroundColor: Color.DimmedDarkMossGray,
+    blogThumbnailBackgroundColor: Color.MonoGray00,
+    blogThumbnailIconColor: Color.MonoGray01,
     dividerColor: Color.MonoGray00,
   },
 };

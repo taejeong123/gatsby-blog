@@ -1,9 +1,9 @@
-import { FunctionComponent, SVGAttributes } from "react";
+import React, { FunctionComponent, SVGAttributes } from "react";
 
 import ArrowLeft from "@/assets/icons/icon-arrow-left.svg";
+import Image from "@/assets/icons/icon-image.svg";
 import Moon from "@/assets/icons/icon-moon.svg";
 import Sun from "@/assets/icons/icon-sun.svg";
-import React from "react";
 
 export interface IconProps extends SVGAttributes<SVGElement> {
   variant: IconVariant;
@@ -37,7 +37,7 @@ export const Icon = ({
   );
 };
 
-export const ICON_LIST = ["ArrowLeft", "Sun", "Moon"] as const;
+export const ICON_LIST = ["ArrowLeft", "Sun", "Moon", "Image"] as const;
 
 export type IconVariant = (typeof ICON_LIST)[number];
 export const ICON_SVG: {
@@ -46,4 +46,5 @@ export const ICON_SVG: {
   ArrowLeft,
   Sun,
   Moon,
+  Image,
 } as const;
