@@ -8,7 +8,7 @@ type TagProps = {
 };
 export const Tag = ({ tag, children }: TagProps) => {
   return (
-    <StyledTag onClick={() => navigate(`/tag/${tag}`)}>{children}</StyledTag>
+    <StyledTag onClick={() => navigate(`/tags/${tag}`)}>{children}</StyledTag>
   );
 };
 
