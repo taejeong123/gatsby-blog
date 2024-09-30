@@ -12,9 +12,14 @@ const BlogPost = ({ data, children }: BlogPostProps) => {
     <GlobalLayout>
       <StyledBlogContentHeader gap="10px" flexDirection="column">
         <Flex gap="10px">
-          {data.mdx?.frontmatter?.tags?.map((tag, i) => (
-            <Tag key={`${tag}_${i}`}>{tag}</Tag>
-          ))}
+          {data.mdx?.frontmatter?.tags?.map(
+            (tag, i) =>
+              tag && (
+                <Tag key={`${tag}_${i}`} tag={tag}>
+                  {tag}
+                </Tag>
+              )
+          )}
         </Flex>
 
         <h1>{data.mdx?.frontmatter?.title}</h1>

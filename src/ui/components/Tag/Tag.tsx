@@ -1,11 +1,15 @@
 import styled from "@emotion/styled";
+import { navigate } from "gatsby";
 import React, { ReactNode } from "react";
 
 type TagProps = {
+  tag: string;
   children: ReactNode;
 };
-export const Tag = ({ children }: TagProps) => {
-  return <StyledTag>{children}</StyledTag>;
+export const Tag = ({ tag, children }: TagProps) => {
+  return (
+    <StyledTag onClick={() => navigate(`/tag/${tag}`)}>{children}</StyledTag>
+  );
 };
 
 const StyledTag = styled.div`
