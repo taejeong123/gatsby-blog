@@ -4,7 +4,7 @@ import React from "react";
 const AboutPage = () => {
   return (
     <GlobalLayout>
-      <p>I'm Front-End developer work in korea.</p>
+      <h3>I'm Front-End developer work in korea.</h3>
     </GlobalLayout>
   );
 };

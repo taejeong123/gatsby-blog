@@ -1,3 +1,4 @@
+import { StyledDivider } from "@/styles";
 import { Flex, GlobalLayout, Seo, Tag } from "@/ui";
 import styled from "@emotion/styled";
 import { graphql } from "gatsby";
@@ -59,11 +60,4 @@ const StyledBlogContentHeader = styled(Flex)`
   & > span {
     font-size: 14px;
   }
-`;
-
-const StyledDivider = styled.div`
-  margin: 30px 0;
-  width: 100%;
-  height: 1px;
-  background-color: ${({ theme }) => theme.mode.dividerColor};
 `;

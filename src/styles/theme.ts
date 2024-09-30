@@ -3,6 +3,7 @@ import { Theme } from "@emotion/react";
 
 export const lightTheme: Theme = {
   mode: {
+    modeName: "light",
     text: Color.DarkMossGray,
     backgroundColor: Color.MonoWhite,
     headerDimmedBackgroundColor: Color.DimmedWhite,
@@ -16,6 +17,7 @@ export const lightTheme: Theme = {
 
 export const darkTheme: Theme = {
   mode: {
+    modeName: "dark",
     text: Color.MonoWhiteText,
     backgroundColor: Color.DarkMossGray,
     headerDimmedBackgroundColor: Color.DimmedDarkMossGray,

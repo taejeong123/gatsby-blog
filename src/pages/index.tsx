@@ -9,30 +9,32 @@ type IndexPageProps = {
   data: Queries.AllMdxQuery;
 };
 const IndexPage = ({ data }: IndexPageProps) => {
+  const { nodes } = data.allMdx;
+
   const handleOnClickArticle = (slug: string) => {
     if (slug) navigate(`/blog/${slug}`);
   };
 
   return (
     <GlobalLayout>
-      <p>Welcome to my Blog 🔥</p>
+      <h3>Welcome to my Blog 🔥</h3>
 
       <StyledContainer>
-        {data.allMdx.nodes.map((node) => (
-          <StyledCardContent key={node.id}>
+        {nodes.map(({ id, frontmatter }) => (
+          <StyledCardContent key={id}>
             <StyledImageBox
               justifyContent="center"
               alignItems="center"
-              onClick={() => handleOnClickArticle(node.frontmatter?.slug || "")}
+              onClick={() => handleOnClickArticle(frontmatter?.slug || "")}
             >
-              {node.frontmatter?.thumbnail_image?.childImageSharp
+              {frontmatter?.thumbnail_image?.childImageSharp
                 ?.gatsbyImageData ? (
                 <StyledThumbnailImage
                   image={
-                    node.frontmatter?.thumbnail_image?.childImageSharp
+                    frontmatter?.thumbnail_image?.childImageSharp
                       ?.gatsbyImageData
                   }
-                  alt={node.frontmatter?.thumbnail_image_alt || "image alt"}
+                  alt={frontmatter?.thumbnail_image_alt || "image alt"}
                 />
               ) : (
                 <StyledThumbnailIcon variant="Image" size="20px" />
@@ -41,13 +43,13 @@ const IndexPage = ({ data }: IndexPageProps) => {
 
             <Flex gap="5px" flexDirection="column">
               <h3>
-                <StyledLink to={`/blog/${node.frontmatter?.slug}`}>
-                  {node.frontmatter?.title}
+                <StyledLink to={`/blog/${frontmatter?.slug}`}>
+                  {frontmatter?.title}
                 </StyledLink>
               </h3>
-              <span>{node.frontmatter?.date}</span>
+              <span>{frontmatter?.date}</span>
               <Flex gap="10px">
-                {node.frontmatter?.tags?.map(
+                {frontmatter?.tags?.map(
                   (tag, i) =>
                     tag && (
                       <Tag key={`${tag}_${i}`} tag={tag}>

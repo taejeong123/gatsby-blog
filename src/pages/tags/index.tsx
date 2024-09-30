@@ -1,22 +1,24 @@
-import { GlobalLayout, Seo } from "@/ui";
-import { Link, PageProps, graphql } from "gatsby";
+import { Flex, GlobalLayout, Seo, Tag } from "@/ui";
+import { PageProps, graphql } from "gatsby";
 import * as React from "react";
 
 const TagsPage = ({ data }: PageProps<Queries.AllMdxTagsGroupQuery>) => {
   const { group } = data.allMdx;
-  const tags = [...group].sort((a, b) => b.totalCount - a.totalCount);
 
   return (
     <GlobalLayout>
-      <h1>tags</h1>
-      <ul>
-        {tags.map((tag) => (
-          <li key={tag.fieldValue}>
-            <Link to={`/tags/${tag.fieldValue}/`}>{`${tag.fieldValue}`}</Link>{" "}
-            <small>{`${tag.totalCount}`}</small>
-          </li>
-        ))}
-      </ul>
+      <h3>tags</h3>
+
+      <Flex gap="10px" style={{ marginTop: "30px" }}>
+        {group.map(
+          (tag, i) =>
+            tag.fieldValue && (
+              <Tag key={i} tag={tag.fieldValue}>
+                {tag.fieldValue} ({tag.totalCount})
+              </Tag>
+            )
+        )}
+      </Flex>
     </GlobalLayout>
   );
 };
