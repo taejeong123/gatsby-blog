@@ -6,7 +6,7 @@ import { GatsbyImage } from "gatsby-plugin-image";
 import React from "react";
 
 type IndexPageProps = {
-  data: GatsbyTypes.AllMdxQuery;
+  data: Queries.AllMdxQuery;
 };
 const IndexPage = ({ data }: IndexPageProps) => {
   const handleOnClickArticle = (slug: string) => {
@@ -47,9 +47,14 @@ const IndexPage = ({ data }: IndexPageProps) => {
               </h3>
               <span>{node.frontmatter?.date}</span>
               <Flex gap="10px">
-                {node.frontmatter?.tags?.map((tag, i) => (
-                  <Tag key={`${tag}_${i}`}>{tag}</Tag>
-                ))}
+                {node.frontmatter?.tags?.map(
+                  (tag, i) =>
+                    tag && (
+                      <Tag key={`${tag}_${i}`} tag={tag}>
+                        {tag}
+                      </Tag>
+                    )
+                )}
               </Flex>
             </Flex>
           </StyledCardContent>

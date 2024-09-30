@@ -4,7 +4,7 @@ import { graphql } from "gatsby";
 import React, { ReactNode } from "react";
 
 type BlogPostProps = {
-  data: GatsbyTypes.MdxQuery;
+  data: Queries.MdxQuery;
   children: ReactNode;
 };
 const BlogPost = ({ data, children }: BlogPostProps) => {
@@ -45,7 +45,7 @@ export const query = graphql`
   }
 `;
 
-export const Head = ({ data }: { data: GatsbyTypes.MdxQuery }) => (
+export const Head = ({ data }: { data: Queries.MdxQuery }) => (
   <Seo title={data.mdx?.frontmatter?.title || ""} />
 );
 

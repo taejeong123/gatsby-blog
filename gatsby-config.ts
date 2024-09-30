@@ -40,12 +40,6 @@ const config: GatsbyConfig = {
         path: `${__dirname}/blog`,
       },
     },
-    {
-      resolve: `gatsby-plugin-typegen`,
-      options: {
-        outputPath: `./src/__generated__/gatsby-types.d.ts`,
-      },
-    },
     `gatsby-transformer-sharp`,
     {
       resolve: `gatsby-plugin-react-svg`,
@@ -53,6 +47,13 @@ const config: GatsbyConfig = {
         rule: {
           include: /assets\/icons/,
         },
+      },
+    },
+    {
+      resolve: `gatsby-plugin-typescript`,
+      options: {
+        isTSX: true,
+        allExtensions: true,
       },
     },
   ],

@@ -108,7 +108,7 @@
   },
   "include": [
     "./src/**/*",
-    "./src/__generated__/gatsby-types.d.ts",
+    "./src/gatsby-types.d.ts",
     "./gatsby-node.ts",
     "./gatsby-config.ts",
     "./plugins/**/*"
