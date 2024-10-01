@@ -42,13 +42,16 @@ export const query = graphql`
         date(formatString: "MMMM D, YYYY")
         tags
       }
+      excerpt
     }
   }
 `;
 
-export const Head = ({ data: { mdx } }: { data: Queries.MdxQuery }) => (
-  <Seo title={mdx?.frontmatter?.title || ""} />
-);
+export const Head = ({ data: { mdx } }: { data: Queries.MdxQuery }) => {
+  const title = mdx?.frontmatter?.title;
+  const excerpt = mdx?.excerpt;
+  return title && excerpt && <Seo title={title} description={excerpt} />;
+};
 
 export default BlogPost;
 

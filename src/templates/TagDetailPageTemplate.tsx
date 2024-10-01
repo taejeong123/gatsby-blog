@@ -1,6 +1,6 @@
 import { StyledBlogContainer, StyledDivider } from "@/styles";
 import { TagDetailType } from "@/types";
-import { BlogCard, Flex, GlobalLayout, Tag } from "@/ui";
+import { BlogCard, Flex, GlobalLayout, Seo, Tag } from "@/ui";
 import styled from "@emotion/styled";
 import { PageProps, graphql } from "gatsby";
 import * as React from "react";
@@ -81,6 +81,13 @@ export const pageQuery = graphql`
     }
   }
 `;
+
+export const Head = ({
+  pageContext,
+}: PageProps<object, TagDetailPageTemplateContext>) => {
+  const { tag } = pageContext;
+  return <Seo title={`Tags | ${tag}`} />;
+};
 
 export default TagDetailPageTemplate;
 
