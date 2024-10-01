@@ -29,7 +29,7 @@ export const createPages: GatsbyNode["createPages"] = async ({
   }
 
   const tagsTemplatePath = path.resolve(
-    "./src/ui/templates/TagDetailPageTemplate.tsx"
+    "./src/templates/TagDetailPageTemplate.tsx"
   );
 
   result.data.tagsGroup.group.forEach((tag) => {

@@ -1,6 +1,6 @@
 import { useTheme } from "@/hooks/useTheme";
 import { GlobalStyle, darkTheme, lightTheme } from "@/styles";
-import { GlobalHeader } from "@/ui";
+import { GlobalFooter, GlobalHeader } from "@/ui";
 import { Theme, ThemeProvider } from "@emotion/react";
 import styled from "@emotion/styled";
 import React, { ReactNode } from "react";
@@ -21,6 +21,8 @@ export const GlobalLayout = ({ children }: GlobalLayoutProps) => {
       <StyledContainer>
         <main>{children}</main>
       </StyledContainer>
+
+      <GlobalFooter />
     </ThemeProvider>
   );
 };
