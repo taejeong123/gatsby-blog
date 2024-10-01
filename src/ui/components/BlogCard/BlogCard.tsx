@@ -24,7 +24,7 @@ export const BlogCard = ({ frontmatter }: BlogCardProps) => {
         alignItems="center"
         onClick={() => handleOnClickArticle(slug)}
       >
-        {thumbnail_image ? (
+        {thumbnail_image?.childImageSharp?.gatsbyImageData ? (
           <StyledThumbnailImage
             image={thumbnail_image?.childImageSharp.gatsbyImageData}
             alt={thumbnail_image_alt}

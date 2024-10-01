@@ -8,8 +8,8 @@ export type BlogFrontmatterType = {
   thumbnail_image_alt: string;
   thumbnail_image: {
     childImageSharp: {
-      gatsbyImageData: IGatsbyImageData;
-    };
+      gatsbyImageData: IGatsbyImageData | null;
+    } | null;
   } | null;
 };
 
