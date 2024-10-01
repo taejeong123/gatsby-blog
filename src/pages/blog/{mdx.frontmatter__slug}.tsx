@@ -46,8 +46,8 @@ export const query = graphql`
   }
 `;
 
-export const Head = ({ data }: { data: Queries.MdxQuery }) => (
-  <Seo title={data.mdx?.frontmatter?.title || ""} />
+export const Head = ({ data: { mdx } }: { data: Queries.MdxQuery }) => (
+  <Seo title={mdx?.frontmatter?.title || ""} />
 );
 
 export default BlogPost;

@@ -47,7 +47,7 @@ const baseStyle = (theme: Theme) => css`
     /* min-height: 100vh; */
     line-height: 1.5;
 
-    color: ${theme.mode.text};
+    color: ${theme.mode.primaryText};
     background-color: ${theme.mode.backgroundColor};
   }
 

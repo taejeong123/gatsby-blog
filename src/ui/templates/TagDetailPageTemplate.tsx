@@ -1,5 +1,7 @@
-import { StyledDivider, StyledLink } from "@/styles";
-import { Flex, GlobalLayout, Tag } from "@/ui";
+import { StyledBlogContainer, StyledDivider } from "@/styles";
+import { TagDetailType } from "@/types";
+import { BlogCard, Flex, GlobalLayout, Tag } from "@/ui";
+import styled from "@emotion/styled";
 import { PageProps, graphql } from "gatsby";
 import * as React from "react";
 
@@ -9,17 +11,14 @@ type TagDetailPageTemplateContext = {
 const TagDetailPageTemplate = ({
   pageContext,
   data,
-}: PageProps<
-  Queries.AllMdxTagPageDetailQuery,
-  TagDetailPageTemplateContext
->) => {
+}: PageProps<TagDetailType, TagDetailPageTemplateContext>) => {
   const { tag: currentTag } = pageContext;
   const { group } = data.allTags;
-  const { totalCount, edges } = data.tagDetail;
+  const { totalCount, nodes } = data.tagDetail;
 
   return (
     <GlobalLayout>
-      <h3>{currentTag}</h3>
+      <h3>{currentTag} 🏷️</h3>
 
       <Flex gap="10px" style={{ marginTop: "30px" }}>
         {group.map(
@@ -38,19 +37,15 @@ const TagDetailPageTemplate = ({
 
       <StyledDivider />
 
-      <p>{totalCount}개의 글</p>
-      <ul>
-        {edges.map(
-          ({ node: { id, frontmatter } }) =>
-            frontmatter && (
-              <li key={id}>
-                <StyledLink to={`/blog/${frontmatter.slug}`}>
-                  {frontmatter.title}
-                </StyledLink>
-              </li>
-            )
-        )}
-      </ul>
+      <StyledBlogWrapper flexDirection="column">
+        <p>{totalCount}개의 글</p>
+
+        <StyledBlogContainer>
+          {nodes.map(({ id, frontmatter }) => (
+            <BlogCard key={id} frontmatter={frontmatter} />
+          ))}
+        </StyledBlogContainer>
+      </StyledBlogWrapper>
     </GlobalLayout>
   );
 };
@@ -68,13 +63,19 @@ export const pageQuery = graphql`
       filter: { frontmatter: { tags: { in: [$tag] } } }
     ) {
       totalCount
-      edges {
-        node {
-          id
-          frontmatter {
-            slug
-            title
+      nodes {
+        id
+        frontmatter {
+          date(formatString: "MMMM D, YYYY")
+          title
+          slug
+          tags
+          thumbnail_image {
+            childImageSharp {
+              gatsbyImageData
+            }
           }
+          thumbnail_image_alt
         }
       }
     }
@@ -82,3 +83,10 @@ export const pageQuery = graphql`
 `;
 
 export default TagDetailPageTemplate;
+
+const StyledBlogWrapper = styled(Flex)`
+  & > p {
+    font-size: 14px;
+    color: ${({ theme }) => theme.mode.secondaryText};
+  }
+`;

@@ -74,7 +74,7 @@ const ThemeToggleButton = styled.button`
   align-items: center;
   justify-content: center;
   border: none;
-  color: ${({ theme }) => theme.mode.text};
+  color: ${({ theme }) => theme.mode.primaryText};
   background-color: ${({ theme }) => theme.mode.backgroundColor};
   cursor: pointer;
 `;

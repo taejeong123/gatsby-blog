@@ -7,7 +7,7 @@ const TagsPage = ({ data }: PageProps<Queries.AllMdxTagsGroupQuery>) => {
 
   return (
     <GlobalLayout>
-      <h3>tags</h3>
+      <h3>tags 🏷️</h3>
 
       <Flex gap="10px" style={{ marginTop: "30px" }}>
         {group.map(
