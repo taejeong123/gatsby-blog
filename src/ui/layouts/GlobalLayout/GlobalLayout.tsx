@@ -30,4 +30,12 @@ const StyledContainer = styled.div`
   margin-top: 50px;
   padding: 30px 0;
   max-width: 700px;
+
+  @media (max-width: 750px) {
+    max-width: 480px;
+  }
+
+  @media (max-width: 500px) {
+    max-width: 350px;
+  }
 `;

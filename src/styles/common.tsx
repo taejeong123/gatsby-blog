@@ -23,4 +23,16 @@ export const StyledBlogContainer = styled(Flex)`
   & > article {
     width: calc(100% / 3 - 13.4px);
   }
+
+  @media (max-width: 750px) {
+    & > article {
+      width: calc(100% / 2 - 13.4px);
+    }
+  }
+
+  @media (max-width: 500px) {
+    & > article {
+      width: 100%;
+    }
+  }
 `;

@@ -23,9 +23,6 @@ export const GlobalHeader = ({ theme, onThemeToggle }: GlobalHeaderType) => {
               <StyledLink to="/tags">Tags</StyledLink>
             </li>
             <li>
-              <StyledLink to="/about">About</StyledLink>
-            </li>
-            <li>
               <ThemeToggleButton onClick={onThemeToggle}>
                 <Icon
                   variant={theme === "light" ? "Moon" : "Sun"}
@@ -55,7 +52,7 @@ const StyledHeader = styled.header`
 `;
 
 const StyledHeaderContainer = styled(Flex)`
-  width: 1100px;
+  width: 1000px;
   height: 100%;
 
   & > nav {
@@ -65,6 +62,18 @@ const StyledHeaderContainer = styled(Flex)`
       gap: 20px;
       list-style: none;
     }
+  }
+
+  @media (max-width: 1050px) {
+    max-width: 700px;
+  }
+
+  @media (max-width: 750px) {
+    max-width: 480px;
+  }
+
+  @media (max-width: 500px) {
+    width: 350px;
   }
 `;
 
