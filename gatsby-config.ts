@@ -25,12 +25,7 @@ const config: GatsbyConfig = {
     {
       resolve: `gatsby-plugin-mdx`,
       options: {
-        gatsbyRemarkPlugins: [
-          {
-            resolve: `gatsby-remark-prismjs`,
-            options: {},
-          },
-        ],
+        gatsbyRemarkPlugins: [`gatsby-remark-prismjs`],
       },
     },
     {
