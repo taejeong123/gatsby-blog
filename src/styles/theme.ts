@@ -13,6 +13,7 @@ export const lightTheme: Theme = {
     dividerColor: Color.MonoGray03,
     tagBackgroundColor: Color.MonoGray03,
     tagHoverBackgroundColor: Color.MonoGray02,
+    tableBorderColor: Color.MonoGray03,
   },
 };
 
@@ -28,5 +29,6 @@ export const darkTheme: Theme = {
     dividerColor: Color.MonoGray00,
     tagBackgroundColor: Color.MonoBlack01,
     tagHoverBackgroundColor: Color.MonoGray00,
+    tableBorderColor: Color.MonoGray00,
   },
 };

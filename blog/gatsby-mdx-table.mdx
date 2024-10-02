@@ -1,0 +1,66 @@
+---
+title: "Gatsby 환경에서 테이블 삽입하기 (gatsby-plugin-mdx를 사용하는 경우)"
+date: "2024-10-02"
+slug: "gatsby-mdx-table"
+tags:
+  - gatsby
+  - table
+---
+
+## Gatsby 환경에서 테이블 삽입하는 방법
+
+이걸로 삽질 많이 했습니다.
+
+### 1. 테이블 삽입
+
+mdx파일에 위와 같은 문법으로 테이블을 삽입해줍니다.
+
+```
+| 호스트명     | IP 주소         |
+| ------------ | --------------- |
+| mydomain.com | 111.111.111.222 |
+| mydomain.com | 111.111.222.111 |
+| mydomain.com | 111.222.111.111 |
+| mydomain.com | 222.111.111.111 |
+```
+
+### 2. remark-gfm 설치
+
+최신 버전을 사용하면 gatsby-plugin-mdx 플러그인과 충돌이 일어나는 것 같습니다. 그래서 1버전으로 설치해줍니다.
+
+```
+npm i remark-gfm@1
+```
+
+### 3. gatsby-config.ts 수정
+
+```typescript
+// gatsby-config.ts
+import remarkGfm from "remark-gfm";
+
+const config: GatsbyConfig = {
+  // ...
+  plugins: [
+    {
+      resolve: `gatsby-plugin-mdx`,
+      options: {
+        mdxOptions: {
+          remarkPlugins: [remarkGfm],
+        },
+      },
+    },
+  ],
+  // ...
+};
+```
+
+### 4. 실행
+
+테이블이 정상적으로 나오는 것을 확인할 수 있습니다.
+
+| 호스트명     | IP 주소         |
+| ------------ | --------------- |
+| mydomain.com | 111.111.111.222 |
+| mydomain.com | 111.111.222.111 |
+| mydomain.com | 111.222.111.111 |
+| mydomain.com | 222.111.111.111 |

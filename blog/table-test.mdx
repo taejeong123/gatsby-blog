@@ -17,3 +17,24 @@ tags:
 | mydomain.com | 111.111.222.111 |
 | mydomain.com | 111.222.111.111 |
 | mydomain.com | 222.111.111.111 |
+
+| Field        | Req | Description                                          |
+| :----------- | :-- | :--------------------------------------------------- |
+| NAME         | Yes | Displayed in header and footer. Used in SEO and RSS. |
+| EMAIL        | Yes | Displayed in contact section.                        |
+| NUM_POSTS    | Yes | Limit num of posts on home page.                     |
+| NUM_WORKS    | Yes | Limit num of works on home page.                     |
+| NUM_PROJECTS | Yes | Limit num of projects on home page.                  |
+
+```
+gatsbyRemarkPlugins: [
+  {
+    resolve: `gatsby-remark-prismjs`,
+    options: {
+      inlineCodeMarker: null,
+      showLineNumbers: true,
+      noInlineHighlight: false,
+    },
+  },
+],
+```

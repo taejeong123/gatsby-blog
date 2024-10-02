@@ -107,6 +107,17 @@ const baseStyle = (theme: Theme) => css`
     padding: 2px 4px;
     color: ${Color.Sandstone};
   }
+
+  table {
+    margin: 10px 0;
+    border-collapse: collapse;
+
+    & th,
+    td {
+      padding: 6px 12px;
+      border: 1px solid ${theme.mode.tableBorderColor};
+    }
+  }
 `;
 
 export const GlobalStyle = () => <Global styles={baseStyle} />;

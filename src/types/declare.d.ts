@@ -13,6 +13,7 @@ declare module "@emotion/react" {
       dividerColor: string;
       tagBackgroundColor: string;
       tagHoverBackgroundColor: string;
+      tableBorderColor: string;
     };
   }
 }

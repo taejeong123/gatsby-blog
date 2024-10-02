@@ -1,4 +1,5 @@
 import type { GatsbyConfig } from "gatsby";
+import remarkGfm from "remark-gfm";
 
 const config: GatsbyConfig = {
   siteMetadata: {
@@ -16,7 +17,7 @@ const config: GatsbyConfig = {
         alias: {
           "@": "./src",
         },
-        extensions: ["ts", "tsx"],
+        extensions: [`.ts`, `.tsx`],
       },
     },
     `gatsby-plugin-emotion`,
@@ -25,7 +26,20 @@ const config: GatsbyConfig = {
     {
       resolve: `gatsby-plugin-mdx`,
       options: {
-        gatsbyRemarkPlugins: [`gatsby-remark-prismjs`],
+        mdxOptions: {
+          remarkPlugins: [remarkGfm],
+        },
+        extensions: [`.mdx`, `.md`],
+        gatsbyRemarkPlugins: [
+          {
+            resolve: `gatsby-remark-prismjs`,
+            options: {
+              inlineCodeMarker: null,
+              showLineNumbers: true,
+              noInlineHighlight: false,
+            },
+          },
+        ],
       },
     },
     {
