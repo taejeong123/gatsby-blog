@@ -1,5 +1,14 @@
 import { IGatsbyImageData } from "gatsby-plugin-image";
 
+export type AllBlogType = {
+  allMdx: {
+    nodes: {
+      id: number;
+      frontmatter: BlogFrontmatterType;
+    }[];
+  };
+};
+
 export type BlogFrontmatterType = {
   date: string;
   title: string;
@@ -13,11 +22,24 @@ export type BlogFrontmatterType = {
   } | null;
 };
 
-export type AllBlogType = {
-  allMdx: {
-    nodes: {
-      id: number;
-      frontmatter: BlogFrontmatterType;
-    }[];
+export type BlogDetailType = {
+  mdx: {
+    frontmatter: {
+      title: string;
+      date: string;
+      tags: string[];
+    };
+    excerpt: string;
+    tableOfContents: TableOfContentsType;
   };
+};
+
+export type TableOfContentsType = {
+  items: ContentsItemType[];
+};
+
+export type ContentsItemType = {
+  url: string;
+  title: string;
+  items?: ContentsItemType[];
 };

@@ -1,19 +1,20 @@
 import { StyledDivider } from "@/styles";
-import { Flex, GlobalLayout, Seo, Tag } from "@/ui";
+import { BlogDetailType } from "@/types";
+import { Flex, GlobalLayout, Seo, TableOfContents, Tag } from "@/ui";
 import styled from "@emotion/styled";
-import { graphql } from "gatsby";
-import React, { ReactNode } from "react";
+import { PageProps, graphql } from "gatsby";
+import React from "react";
 
-type BlogPostProps = {
-  data: Queries.MdxQuery;
-  children: ReactNode;
-};
-const BlogPost = ({ data, children }: BlogPostProps) => {
+const BlogPost = ({ data, children }: PageProps<BlogDetailType>) => {
+  const {
+    mdx: { frontmatter },
+  } = data;
+
   return (
     <GlobalLayout>
       <StyledBlogContentHeader gap="10px" flexDirection="column">
         <Flex gap="10px">
-          {data.mdx?.frontmatter?.tags?.map(
+          {frontmatter.tags.map(
             (tag, i) =>
               tag && (
                 <Tag key={`${tag}_${i}`} tag={tag}>
@@ -23,9 +24,11 @@ const BlogPost = ({ data, children }: BlogPostProps) => {
           )}
         </Flex>
 
-        <h1>{data.mdx?.frontmatter?.title}</h1>
-        <span>{data.mdx?.frontmatter?.date}</span>
+        <h1>{frontmatter.title}</h1>
+        <span>{frontmatter.date}</span>
       </StyledBlogContentHeader>
+
+      <TableOfContents items={data.mdx.tableOfContents.items} />
 
       <StyledDivider />
 
@@ -43,13 +46,16 @@ export const query = graphql`
         tags
       }
       excerpt
+      tableOfContents
     }
   }
 `;
 
-export const Head = ({ data: { mdx } }: { data: Queries.MdxQuery }) => {
-  const title = mdx?.frontmatter?.title;
-  const excerpt = mdx?.excerpt;
+export const Head = ({ data }: { data: BlogDetailType }) => {
+  const {
+    mdx: { frontmatter, excerpt },
+  } = data;
+  const title = frontmatter.title;
   return title && excerpt && <Seo title={title} description={excerpt} />;
 };
 

@@ -118,6 +118,11 @@ const baseStyle = (theme: Theme) => css`
       border: 1px solid ${theme.mode.tableBorderColor};
     }
   }
+
+  // autolink headers
+  a.anchor-header {
+    fill: ${theme.mode.primaryText};
+  }
 `;
 
 export const GlobalStyle = () => <Global styles={baseStyle} />;

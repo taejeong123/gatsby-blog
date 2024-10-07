@@ -59,7 +59,11 @@ const StyledCardContent = styled.article`
     width: 100%;
     text-overflow: ellipsis;
     overflow: hidden;
-    white-space: nowrap;
+    word-break: break-word;
+
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
   }
 
   & span {

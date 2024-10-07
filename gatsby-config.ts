@@ -32,6 +32,16 @@ const config: GatsbyConfig = {
         extensions: [`.mdx`, `.md`],
         gatsbyRemarkPlugins: [
           {
+            resolve: `gatsby-remark-autolink-headers`,
+            options: {
+              className: `anchor-header`,
+              offsetY: `50`,
+              maintainCase: false,
+              removeAccents: true,
+              elements: [`h2`, `h3`, `h4`],
+            },
+          },
+          {
             resolve: `gatsby-remark-prismjs`,
             options: {
               inlineCodeMarker: null,
