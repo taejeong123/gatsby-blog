@@ -28,6 +28,7 @@ export type BlogDetailType = {
       title: string;
       date: string;
       tags: string[];
+      slug: string;
     };
     excerpt: string;
     tableOfContents: TableOfContentsType;

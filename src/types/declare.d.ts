@@ -6,6 +6,7 @@ declare module "@emotion/react" {
       modeName: ThemeType;
       primaryText: string;
       secondaryText: string;
+      tocText: string;
       backgroundColor: string;
       headerDimmedBackgroundColor: string;
       blogThumbnailBackgroundColor: string;

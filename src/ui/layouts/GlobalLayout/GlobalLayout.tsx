@@ -33,6 +33,10 @@ const StyledContainer = styled.div`
   padding: 30px 0;
   max-width: 700px;
 
+  & > main {
+    position: relative;
+  }
+
   @media (max-width: 750px) {
     max-width: 480px;
   }

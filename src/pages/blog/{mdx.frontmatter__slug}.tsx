@@ -1,4 +1,3 @@
-import { StyledDivider } from "@/styles";
 import { BlogDetailType } from "@/types";
 import { Flex, GlobalLayout, Seo, TableOfContents, Tag } from "@/ui";
 import styled from "@emotion/styled";
@@ -6,9 +5,42 @@ import { PageProps, graphql } from "gatsby";
 import React from "react";
 
 const BlogPost = ({ data, children }: PageProps<BlogDetailType>) => {
+  // const contentRef = useRef<HTMLDivElement>(null);
   const {
     mdx: { frontmatter },
   } = data;
+
+  // useEffect(() => {
+  //   if (!contentRef.current) return;
+  //   const headingEl = contentRef.current.querySelectorAll<HTMLElement>(
+  //     ".md h1, .md h2, .md h3, .md h4, .md h5, .md h6"
+  //   );
+
+  //   const observer = new IntersectionObserver(
+  //     (entries) => {
+  //       const targets = entries.filter(
+  //         (entry) => entry.isIntersecting && entry.intersectionRatio >= 1
+  //       );
+
+  //       if (targets.length === 0) return;
+
+  //       contentRef.current
+  //         ?.querySelectorAll(".highlight")
+  //         .forEach((el) => el.classList.remove("highlight"));
+
+  //       targets.forEach((it) => {
+  //         const targetId = it.target.getAttribute("id");
+  //         const linkSelector = `.toc a[href='#${encodeURI(targetId ?? "")}']`;
+  //         const linkElement = contentRef.current?.querySelector(linkSelector);
+  //         linkElement?.classList.add("highlight");
+  //       });
+  //     },
+  //     { threshold: 1.0 }
+  //   );
+
+  //   headingEl.forEach((el) => observer.observe(el));
+  //   return () => observer.disconnect();
+  // }, []);
 
   return (
     <GlobalLayout>
@@ -28,11 +60,14 @@ const BlogPost = ({ data, children }: PageProps<BlogDetailType>) => {
         <span>{frontmatter.date}</span>
       </StyledBlogContentHeader>
 
-      <TableOfContents items={data.mdx.tableOfContents.items} />
+      <div style={{ marginTop: "50px" }}>
+        <TableOfContents
+          items={data.mdx.tableOfContents.items}
+          slug={frontmatter.slug}
+        />
 
-      <StyledDivider />
-
-      {children}
+        {children}
+      </div>
     </GlobalLayout>
   );
 };
@@ -44,6 +79,7 @@ export const query = graphql`
         title
         date(formatString: "MMMM D, YYYY")
         tags
+        slug
       }
       excerpt
       tableOfContents
