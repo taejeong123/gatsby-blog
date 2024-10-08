@@ -1,4 +1,4 @@
-import { StyledBlogContainer } from "@/styles";
+import { StyledBlogContainer } from "@/common";
 import { AllBlogType } from "@/types";
 import { BlogCard, GlobalLayout, Seo } from "@/ui";
 import { PageProps, graphql } from "gatsby";

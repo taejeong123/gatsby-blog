@@ -5,42 +5,9 @@ import { PageProps, graphql } from "gatsby";
 import React from "react";
 
 const BlogPost = ({ data, children }: PageProps<BlogDetailType>) => {
-  // const contentRef = useRef<HTMLDivElement>(null);
   const {
     mdx: { frontmatter },
   } = data;
-
-  // useEffect(() => {
-  //   if (!contentRef.current) return;
-  //   const headingEl = contentRef.current.querySelectorAll<HTMLElement>(
-  //     ".md h1, .md h2, .md h3, .md h4, .md h5, .md h6"
-  //   );
-
-  //   const observer = new IntersectionObserver(
-  //     (entries) => {
-  //       const targets = entries.filter(
-  //         (entry) => entry.isIntersecting && entry.intersectionRatio >= 1
-  //       );
-
-  //       if (targets.length === 0) return;
-
-  //       contentRef.current
-  //         ?.querySelectorAll(".highlight")
-  //         .forEach((el) => el.classList.remove("highlight"));
-
-  //       targets.forEach((it) => {
-  //         const targetId = it.target.getAttribute("id");
-  //         const linkSelector = `.toc a[href='#${encodeURI(targetId ?? "")}']`;
-  //         const linkElement = contentRef.current?.querySelector(linkSelector);
-  //         linkElement?.classList.add("highlight");
-  //       });
-  //     },
-  //     { threshold: 1.0 }
-  //   );
-
-  //   headingEl.forEach((el) => observer.observe(el));
-  //   return () => observer.disconnect();
-  // }, []);
 
   return (
     <GlobalLayout>
@@ -68,6 +35,11 @@ const BlogPost = ({ data, children }: PageProps<BlogDetailType>) => {
 
         {children}
       </div>
+
+      {/* TODO: 프로필 or 댓글 or 이전글,다음글 or 추천글 컨텐츠 추가 */}
+      <StyledBlogFooter justifyContent="center" alignItems="center">
+        something contents here (profile, comments, etc..)
+      </StyledBlogFooter>
     </GlobalLayout>
   );
 };
@@ -105,4 +77,12 @@ const StyledBlogContentHeader = styled(Flex)`
   & > span {
     font-size: 14px;
   }
+`;
+
+const StyledBlogFooter = styled(Flex)`
+  margin-top: 50px;
+  height: 800px;
+  border-top: 1px solid ${({ theme }) => theme.mode.dividerColor};
+
+  color: ${({ theme }) => theme.mode.tocText};
 `;

@@ -1,4 +1,4 @@
-import { StyledLink } from "@/styles";
+import { StyledLink } from "@/common";
 import { BlogFrontmatterType } from "@/types";
 import { Flex, Icon, Tag } from "@/ui";
 import styled from "@emotion/styled";

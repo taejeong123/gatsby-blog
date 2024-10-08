@@ -1,4 +1,4 @@
-import { StyledLink } from "@/styles";
+import { StyledLink } from "@/common";
 import { ThemeType } from "@/types/declare";
 import { Flex, Icon } from "@/ui";
 import styled from "@emotion/styled";

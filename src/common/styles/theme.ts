@@ -11,10 +11,9 @@ export const lightTheme: Theme = {
     headerDimmedBackgroundColor: Color.DimmedWhite,
     blogThumbnailBackgroundColor: Color.MonoGray03,
     blogThumbnailIconColor: Color.MonoGray02,
-    dividerColor: Color.MonoGray03,
+    dividerColor: Color.MonoGray04,
     tagBackgroundColor: Color.MonoGray03,
     tagHoverBackgroundColor: Color.MonoGray02,
-    tableBorderColor: Color.MonoGray03,
   },
 };
 
@@ -28,9 +27,8 @@ export const darkTheme: Theme = {
     headerDimmedBackgroundColor: Color.DimmedDarkMossGray,
     blogThumbnailBackgroundColor: Color.MonoGray00,
     blogThumbnailIconColor: Color.MonoGray01,
-    dividerColor: Color.MonoGray00,
+    dividerColor: Color.MonoBlack01,
     tagBackgroundColor: Color.MonoBlack01,
     tagHoverBackgroundColor: Color.MonoGray00,
-    tableBorderColor: Color.MonoGray00,
   },
 };

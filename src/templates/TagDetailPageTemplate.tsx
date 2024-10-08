@@ -1,4 +1,4 @@
-import { StyledBlogContainer, StyledDivider } from "@/styles";
+import { StyledBlogContainer, StyledDivider } from "@/common";
 import { TagDetailType } from "@/types";
 import { BlogCard, Flex, GlobalLayout, Seo, Tag } from "@/ui";
 import styled from "@emotion/styled";

@@ -115,7 +115,7 @@ const baseStyle = (theme: Theme) => css`
     & th,
     td {
       padding: 6px 12px;
-      border: 1px solid ${theme.mode.tableBorderColor};
+      border: 1px solid ${theme.mode.dividerColor};
     }
   }
 

@@ -1,5 +1,5 @@
+import { GlobalStyle, darkTheme, lightTheme } from "@/common";
 import { useTheme } from "@/hooks/useTheme";
-import { GlobalStyle, darkTheme, lightTheme } from "@/styles";
 import { GlobalFooter, GlobalHeader } from "@/ui";
 import { Theme, ThemeProvider } from "@emotion/react";
 import styled from "@emotion/styled";

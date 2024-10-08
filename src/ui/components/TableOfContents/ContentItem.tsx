@@ -34,8 +34,14 @@ const StyledItemLink = styled(Link)`
   font-size: 14px;
   text-decoration: none;
   color: ${({ theme }) => theme.mode.tocText};
+  transition: transform 0.3s, color 0.3s;
 
   &:hover {
     color: ${({ theme }) => theme.mode.secondaryText};
+  }
+
+  &.selected {
+    color: ${({ theme }) => theme.mode.primaryText};
+    transform: scale(1.02);
   }
 `;
